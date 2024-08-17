@@ -11,7 +11,7 @@ const CustomLinks = ({
 }) => {
   return (
     <Link
-      className={`${className} relative will-change-transform transform transition-transform duration-700 ease-linear hover:scale-[102%] hover:font-semibold m-2`}
+      className={`${className} relative m-2 transform transition-transform duration-700 ease-linear will-change-transform hover:scale-[102%] hover:font-semibold`}
       to={to}
     >
       {children}

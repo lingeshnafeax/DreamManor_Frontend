@@ -1,5 +1,5 @@
-import Achievements from "../components/Home/Achievements";
-import HomeSearch from "../components/Home/HomeSearch";
+import Achievements from "../features/Home/Achievements";
+import HomeSearch from "../features/Home/HomeSearch";
 
 const Home = () => {
   return (
