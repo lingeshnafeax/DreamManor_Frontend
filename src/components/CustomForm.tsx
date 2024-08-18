@@ -19,14 +19,14 @@ const CustomForm = (props: CustomFormProps) => {
       return (
         <>
           <select
-            className="border border-black p-3 placeholder:text-black"
+            className="no-arrow border border-black p-3 placeholder:text-black"
             defaultValue={props.selectOptions?.[0]}
             required
             {...props.register(props.name)}
           >
             {props.selectOptions?.map((value) => {
               return (
-                <option key={value} className="p-3" value={value}>
+                <option key={value} className="p-3 text-black" value={value}>
                   {value}
                 </option>
               );
@@ -43,7 +43,7 @@ const CustomForm = (props: CustomFormProps) => {
             type={fieldType}
             placeholder={props.placeholder}
             {...props.register(props.name, {
-              valueAsNumber: true,
+              setValueAs: (value) => (isNaN(value) ? 0 : Number(value)),
             })}
           />
         </>

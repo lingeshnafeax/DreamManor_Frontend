@@ -4,3 +4,9 @@
 body {
   font-family: "Lato", sans-serif;
 }
+.no-arrow {
+  appearance: none;
+  -webkit-appearance: none; /* For WebKit browsers */
+  -moz-appearance: none; /* For Firefox */
+  background-image: none; /* Removes the arrow in most browsers */
+}

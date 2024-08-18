@@ -7,6 +7,8 @@ const ListHomes = () => {
       <div className="lg:col-span-2 flex flex-col gap-y-3 lg:gap-y-6">
         <HomeFilter />
         <HomeCard />
+        <HomeCard />
+        <HomeCard />
       </div>
       <div>Map</div>
     </div>

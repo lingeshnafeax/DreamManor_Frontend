@@ -27,7 +27,7 @@ const Home = () => {
       <div>
         <img
           src="/src/assets/backgroundImage.jpeg"
-          className="hidden min-h-full rounded-md lg:block"
+          className="hidden min-h-full lg:block"
           alt="background-logos"
         />
       </div>

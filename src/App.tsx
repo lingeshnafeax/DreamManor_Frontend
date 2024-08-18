@@ -6,7 +6,7 @@ import ListHomes from "./pages/ListHomes";
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-background font-lato antialiased md:px-24 lg:px-48">
+    <div className="min-h-screen bg-background font-lato antialiased md:px-24 lg:px-28">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

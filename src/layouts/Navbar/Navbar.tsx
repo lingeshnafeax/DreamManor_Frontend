@@ -3,7 +3,7 @@ import CustomLinks from "../../components/CustomLinks";
 const NavBar = () => {
   return (
     <div className="sticky top-0 flex w-full flex-col">
-      <div className="absolute flex w-full items-center justify-between rounded-lg bg-background px-4 py-2">
+      <div className="absolute flex w-full items-center justify-between bg-background px-4 py-2">
         <div className="flex font-lato lg:gap-x-6 lg:py-3">
           <div className="flex items-center gap-x-1">
             <div className="flex h-10 w-10 items-center justify-center lg:h-12 lg:w-12">
