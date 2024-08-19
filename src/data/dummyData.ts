@@ -1,0 +1,86 @@
+export const dummyListData = [
+  {
+    id: 1,
+    title: "Luxury Penthouse",
+    image:
+      "https://www.properties.market/in/blog/wp-content/uploads/2024/01/5-Most-Lavish-And-Expensive-Celebrity-Owned-Houses-In-Hyderabad-1200x675.png",
+    bedroom: 3,
+    bathroom: 2,
+    price: 2500000,
+    address: "123 Park Avenue, New York, NY",
+    latitude: 40.7612,
+    longitude: -73.9762,
+  },
+  {
+    id: 2,
+    title: "Modern Loft",
+    image:
+      "https://www.properties.market/in/blog/wp-content/uploads/2024/01/5-Most-Lavish-And-Expensive-Celebrity-Owned-Houses-In-Hyderabad-1200x675.png",
+    bedroom: 2,
+    bathroom: 1,
+    price: 1800000,
+    address: "456 Broadway, New York, NY",
+    latitude: 40.7223,
+    longitude: -73.9986,
+  },
+  {
+    id: 3,
+    title: "Cozy Cottage",
+    image:
+      "https://www.properties.market/in/blog/wp-content/uploads/2024/01/5-Most-Lavish-And-Expensive-Celebrity-Owned-Houses-In-Hyderabad-1200x675.png",
+    bedroom: 4,
+    bathroom: 3,
+    price: 1200000,
+    address: "789 Greenwich Street, New York, NY",
+    latitude: 40.7397,
+    longitude: -74.0059,
+  },
+  {
+    id: 4,
+    title: "Charming Brownstone",
+    image:
+      "https://www.properties.market/in/blog/wp-content/uploads/2024/01/5-Most-Lavish-And-Expensive-Celebrity-Owned-Houses-In-Hyderabad-1200x675.png",
+    bedroom: 3,
+    bathroom: 2,
+    price: 2200000,
+    address: "1010 5th Avenue, New York, NY",
+    latitude: 40.7794,
+    longitude: -73.9632,
+  },
+  {
+    id: 5,
+    title: "Spacious Suburban Home",
+    image:
+      "https://www.properties.market/in/blog/wp-content/uploads/2024/01/5-Most-Lavish-And-Expensive-Celebrity-Owned-Houses-In-Hyderabad-1200x675.png",
+    bedroom: 5,
+    bathroom: 4,
+    price: 3200000,
+    address: "202 Elm Street, Brooklyn, NY",
+    latitude: 40.6782,
+    longitude: -73.9442,
+  },
+  {
+    id: 6,
+    title: "Elegant Townhouse",
+    image:
+      "https://www.properties.market/in/blog/wp-content/uploads/2024/01/5-Most-Lavish-And-Expensive-Celebrity-Owned-Houses-In-Hyderabad-1200x675.png",
+    bedroom: 4,
+    bathroom: 3,
+    price: 2800000,
+    address: "303 Madison Avenue, New York, NY",
+    latitude: 40.751,
+    longitude: -73.9845,
+  },
+  {
+    id: 7,
+    title: "Urban Studio",
+    image:
+      "https://www.properties.market/in/blog/wp-content/uploads/2024/01/5-Most-Lavish-And-Expensive-Celebrity-Owned-Houses-In-Hyderabad-1200x675.png",
+    bedroom: 1,
+    bathroom: 1,
+    price: 950000,
+    address: "404 Lexington Avenue, New York, NY",
+    latitude: 40.7516,
+    longitude: -73.9765,
+  },
+];
