@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Navbar from "./layouts/Navbar/Navbar";
 import ListHomes from "./pages/ListHomes";
+import HomeDetails from "./pages/HomeDetails";
 
 const App = () => {
   return (
@@ -11,10 +12,10 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/list" element={<ListHomes />} />
-        <Route path="/list/:id" />
+        <Route path="/list/:id" element={<HomeDetails />} />
       </Routes>
     </div>
   );
-};
+};  
 
 export default App;

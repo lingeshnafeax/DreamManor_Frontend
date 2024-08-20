@@ -1,4 +1,6 @@
-export const dummyListData = [
+import { ListHouseDataType } from "../types/HouseDataTypes";
+
+export const dummyListData: ListHouseDataType[] = [
   {
     id: 1,
     title: "Luxury Penthouse",
@@ -84,3 +86,28 @@ export const dummyListData = [
     longitude: -73.9765,
   },
 ];
+
+export const singlePostData = {
+  id: 1,
+  title: "Luxury Penthouse",
+  images: [
+    "https://www.properties.market/in/blog/wp-content/uploads/2024/01/5-Most-Lavish-And-Expensive-Celebrity-Owned-Houses-In-Hyderabad-1200x675.png",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZNMdSv1SKgloyVeqRrTk7ksR8hE0juNJpTg&s",
+    "https://assets-news.housing.com/news/wp-content/uploads/2022/04/07013406/ELEVATED-HOUSE-DESIGN-FEATURE-compressed.jpg",
+    "https://cms.interiorcompany.com/wp-content/uploads/2023/11/simple-house-design-stick-with-the-classics.png",
+  ],
+  bedroom: 3,
+  bathroom: 2,
+  size: 1200,
+  price: 2500000,
+  city: "New York, NY",
+  address: "123 Park Avenue, New York, NY",
+  latitude: 40.7612,
+  school: "5 kms away",
+  bus: "500 ms away",
+  restaurent: "1 km away",
+  description:
+    "A beautifully maintained 3-bedroom, 2-bathroom home, located in a quiet, family-friendly neighborhood, is now on the market. This charming residence features a spacious open-concept living area, a modern kitchen with stainless steel appliances, and a master suite with an en-suite bathroom.",
+
+  longitude: -73.9762,
+};

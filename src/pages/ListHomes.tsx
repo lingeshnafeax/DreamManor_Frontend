@@ -3,14 +3,14 @@ import HomeMap from "../components/HomeMap";
 import HomeCard from "../features/ListHomes/HomeCard";
 import HomeFilter from "../features/ListHomes/HomeFilter";
 import { dummyListData } from "../data/dummyData";
-import { ListHouseData } from "../types/HouseDataTypes";
+import { ListHouseDataType } from "../types/HouseDataTypes";
 
 const ListHomes = () => {
   return (
-    <div className="relative grid h-full px-6 pt-16 lg:grid-cols-3 lg:pt-24">
+    <div className="relative grid h-full px-5 pt-16 lg:grid-cols-3 lg:pt-24">
       <div className="flex flex-col gap-y-3 overflow-y-auto lg:col-span-2 lg:gap-y-6">
         <HomeFilter />
-        {dummyListData.map((data: ListHouseData) => (
+        {dummyListData.map((data: ListHouseDataType) => (
           <HomeCard key={data.id} data={data} />
         ))}
       </div>
@@ -21,6 +21,7 @@ const ListHomes = () => {
             <MapPin />
             <span className="font-semibold">Nearby houses</span>
           </h1>
+
           <HomeMap />
         </div>
       </div>
