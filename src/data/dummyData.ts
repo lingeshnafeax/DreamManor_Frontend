@@ -1,4 +1,5 @@
-import { ListHouseDataType } from "../types/HouseDataTypes";
+import { ListHouseDataType, SinglePostDataType } from "../types/HouseDataTypes";
+import { UserDataType } from "../types/UserDataTypes";
 
 export const dummyListData: ListHouseDataType[] = [
   {
@@ -87,7 +88,7 @@ export const dummyListData: ListHouseDataType[] = [
   },
 ];
 
-export const singlePostData = {
+export const singlePostData:SinglePostDataType = {
   id: 1,
   title: "Luxury Penthouse",
   images: [
@@ -105,9 +106,17 @@ export const singlePostData = {
   latitude: 40.7612,
   school: "5 kms away",
   bus: "500 ms away",
-  restaurent: "1 km away",
+  restaurant: "1 km away",
   description:
     "A beautifully maintained 3-bedroom, 2-bathroom home, located in a quiet, family-friendly neighborhood, is now on the market. This charming residence features a spacious open-concept living area, a modern kitchen with stainless steel appliances, and a master suite with an en-suite bathroom.",
 
   longitude: -73.9762,
+};
+
+export const userData:UserDataType = {
+  id: 1,
+  name: "Lingesh",
+  img:
+    "https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/03/15/15/andrew-garfield.jpg",
+  email:"wlingesh260@gmail.com"
 };

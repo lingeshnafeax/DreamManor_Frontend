@@ -21,7 +21,7 @@ const ListHomes = () => {
             <MapPin />
             <span className="font-semibold">Nearby houses</span>
           </h1>
-
+        
           <HomeMap />
         </div>
       </div>

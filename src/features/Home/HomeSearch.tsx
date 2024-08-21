@@ -1,9 +1,11 @@
 import { SearchIcon } from "lucide-react";
 import { useState } from "react";
 import { cn } from "../../utils/tailwindMerge";
+import { useNavigate } from "react-router-dom";
 
 const HomeSearch = () => {
   const [searchType, setSearchType] = useState<"Rent" | "Buy">("Rent");
+  const navigate=useNavigate()
   return (
     <div className="flex w-full flex-wrap">
       <button
@@ -42,7 +44,7 @@ const HomeSearch = () => {
           type="number"
           placeholder="Max Price"
         />
-        <button className="flex w-full items-center justify-center bg-accent transition duration-200 ease-in-out hover:bg-black hover:text-accent p-2">
+        <button onClick={ ()=>{navigate("/list")}} className="flex w-full items-center justify-center bg-accent transition duration-200 ease-in-out hover:bg-black hover:text-accent p-2">
           <SearchIcon />
         </button>
       </div>

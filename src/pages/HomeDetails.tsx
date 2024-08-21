@@ -17,6 +17,7 @@ import { singlePostData } from "../data/dummyData";
 import FeaturesCard from "../features/HomeDetails/FeaturesCard";
 import HomeMap from "../components/HomeMap";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const HomeDetails = () => {
   const [currentImage, setCurrentImage] = useState(0);
@@ -84,14 +85,14 @@ const HomeDetails = () => {
                 $ {singlePostData.price}
               </span>
             </div>
-            <div className="flex w-1/4 flex-col items-center justify-center rounded-lg bg-accent/20 lg:w-1/6">
+            <Link to={`/profile`} className="flex group w-1/4 flex-col overflow-hidden items-center justify-center rounded-lg bg-accent/20 lg:w-1/6">
               <img
                 src="/src/assets/Mine.jpg"
-                className="h-14 w-14 rounded-full object-cover"
+                className="h-14 w-14 rounded-full transition-transform duration-300 ease-linear group-hover:scale-105 object-cover"
                 alt=""
               />
               <p>Lingesh</p>
-            </div>
+            </Link>
           </div>
           <div>
             <p>{singlePostData.description}</p>
@@ -143,7 +144,7 @@ const HomeDetails = () => {
             <FeaturesCard
               logo={<HotelIcon />}
               heading="Restaurant"
-              description={singlePostData.restaurent}
+              description={singlePostData.restaurant}
             />
           </div>
         </div>

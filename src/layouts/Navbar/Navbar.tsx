@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import CustomLinks from "../../components/CustomLinks";
+import { userData } from "../../data/dummyData";
 
 const NavBar = () => {
+  const location = useLocation();
   return (
     <div className="sticky top-0 z-50 flex w-full flex-col">
-      <div className="absolute z-50 flex w-full items-center justify-between bg-background px-4 py-2">
+      <div className="absolute z-50 flex w-full items-center justify-between bg-background p-4">
         <div className="flex font-lato lg:gap-x-6 lg:py-3">
           <Link to={"/"} className="flex items-center gap-x-1">
             <div className="flex h-10 w-10 items-center justify-center lg:h-12 lg:w-12">
@@ -23,12 +25,33 @@ const NavBar = () => {
             <CustomLinks to="/agents">Agents</CustomLinks>
           </div>
         </div>
-        <div className="z-50 flex items-center gap-3 lg:gap-6">
-          <button>Sign in</button>
-          <button className="border border-black bg-accent px-2 py-2 transition duration-200 ease-in-out hover:bg-black hover:text-accent lg:px-3">
-            Sign up
-          </button>
-        </div>
+        {location.pathname.startsWith("/profile") ? (
+          <div className="flex items-center gap-x-6">
+            
+              <div className="overflow-hidden hidden sm:block">
+                <img
+                  src={userData.img}
+                  className="h-10 w-10 rounded-full object-cover"
+                  alt=""
+                />
+              </div>
+              <p className="font-bold">{userData.name}</p>
+       
+            <button className="relative border border-black bg-accent p-2">
+              Profile
+              <span className="absolute -right-4 -top-4 rounded-full bg-black p-1 px-3 text-white">
+                2
+              </span>
+            </button>
+          </div>
+        ) : (
+          <div className="z-50 flex items-center gap-3 lg:gap-6">
+            <button>Sign in</button>
+            <button className="border border-black bg-accent px-2 py-2 transition duration-200 ease-in-out hover:bg-black hover:text-accent lg:px-3">
+              Sign up
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
