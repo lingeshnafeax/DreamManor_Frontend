@@ -1,11 +1,30 @@
-import { SearchIcon } from "lucide-react";
+import { SearchIcon, X } from "lucide-react";
 import { useState } from "react";
 import { cn } from "../../utils/tailwindMerge";
-import { useNavigate } from "react-router-dom";
+
+import CustomForm from "../../components/CustomForm";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { SearchHomeFormValidation } from "../../utils/validations";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FormFieldType } from "../../types/CustomFormTypes";
+import { SearchFormDataType } from "../../types/FormDataTypes";
 
 const HomeSearch = () => {
   const [searchType, setSearchType] = useState<"Rent" | "Buy">("Rent");
-  const navigate=useNavigate()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<z.infer<typeof SearchHomeFormValidation>>({
+    resolver: zodResolver(SearchHomeFormValidation),
+    mode: "onSubmit",
+  });
+
+  const submitHandler = (data: SearchFormDataType) => {
+    console.log(data);
+  };
+
   return (
     <div className="flex w-full flex-wrap">
       <button
@@ -28,26 +47,47 @@ const HomeSearch = () => {
       >
         Rent
       </button>
-      <div className="grid w-full flex-wrap border border-black sm:grid-cols-4">
-        <input
-          className="h-full border-none p-3 text-sm text-black placeholder-black outline-none ring-accent"
-          type="text"
+      <form
+        onSubmit={handleSubmit((data) => {
+          submitHandler(data);
+        })}
+        className="grid w-full flex-wrap border border-black sm:grid-cols-4"
+      >
+        <CustomForm
+          register={register}
+          fieldType={FormFieldType.TEXT}
+          name="location"
           placeholder="Location City"
         />
-        <input
-          className="h-full border-none p-3 text-sm text-black placeholder-black outline-none ring-accent"
-          type="number"
+        <CustomForm
+          register={register}
+          fieldType={FormFieldType.NUMBER}
+          name="minPrice"
           placeholder="Min Price"
         />
-        <input
-          className="h-full border-none p-3 text-sm text-black placeholder-black outline-none ring-accent"
-          type="number"
+        <CustomForm
+          register={register}
+          fieldType={FormFieldType.NUMBER}
+          name="maxPrice"
           placeholder="Max Price"
         />
-        <button onClick={ ()=>{navigate("/list")}} className="flex w-full items-center justify-center bg-accent transition duration-200 ease-in-out hover:bg-black hover:text-accent p-2">
+        <button
+          type="submit"
+          className="flex w-full items-center justify-center bg-accent p-2 transition duration-200 ease-in-out hover:bg-black hover:text-accent"
+        >
           <SearchIcon />
         </button>
-      </div>
+      </form>
+      {errors && (
+        <div className="mt-3 flex flex-col gap-y-3">
+          {Object.values(errors).map((err) => (
+            <div className="flex items-center gap-x-3">
+              <X className="text-red-500" />
+              <p>{err.message}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

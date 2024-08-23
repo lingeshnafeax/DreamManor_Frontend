@@ -21,7 +21,7 @@ const SellerProfile = () => {
               return <HomeCard data={data} />;
             })}
           </div>
-        </div>
+        </div>  
       </div>
       <div className="relative top-0 grid-cols-1 lg:px-8 px-4 ">
         <div className="lg:fixed lg:w-96 space-y-3">

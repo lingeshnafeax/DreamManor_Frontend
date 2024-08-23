@@ -70,7 +70,7 @@ const HomeFilter = () => {
         </div>
       </form>
       {errors && (
-        <div className="flex flex-col gap-y-2">
+        <div className="flex flex-col gap-y-2 m-3">
           {Object.values(errors).map((err) => (
             <div className="flex items-center gap-x-3">
               <X className="text-red-500" />
