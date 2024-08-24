@@ -49,9 +49,11 @@ const NavBar = () => {
         ) : (
           <div className="z-50 flex items-center gap-3 lg:gap-6">
             <button>Sign in</button>
-            <button className="border border-black bg-accent px-2 py-2 transition duration-200 ease-in-out hover:bg-black hover:text-accent lg:px-3">
-              Sign up
-            </button>
+            <Link to={"/signup"}>
+              <button className="border border-black bg-accent px-2 py-2 transition duration-200 ease-in-out hover:bg-black hover:text-accent lg:px-3">
+                Sign up
+              </button>
+            </Link>
           </div>
         )}
       </div>

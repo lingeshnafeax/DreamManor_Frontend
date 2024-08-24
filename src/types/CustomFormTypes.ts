@@ -10,6 +10,7 @@ export enum FormFieldType {
   RADIO = "radio",
   SELECT = "select",
   TEXTAREA = "textarea",
+  PASSWORD = "password",
 }
 
 export interface CustomFormProps {

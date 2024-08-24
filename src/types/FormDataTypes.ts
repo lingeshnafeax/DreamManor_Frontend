@@ -12,3 +12,12 @@ export interface SearchFormDataType {
   minPrice: number;
   maxPrice: number;
 }
+
+export interface LoginFormData {
+  username: string;
+  password: string;
+}
+
+export interface RegisterFormData extends LoginFormData {
+  email: string;
+}

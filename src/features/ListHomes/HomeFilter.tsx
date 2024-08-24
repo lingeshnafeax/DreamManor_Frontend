@@ -5,7 +5,7 @@ import { FilterFormDataType } from "../../types/FormDataTypes";
 import { z } from "zod";
 import { FilterHomeFormValidation } from "../../utils/validations";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { X } from "lucide-react";
+import FormErrors from "../../components/FormErrors";
 const HomeFilter = () => {
   const {
     register,
@@ -69,16 +69,7 @@ const HomeFilter = () => {
           </button>
         </div>
       </form>
-      {errors && (
-        <div className="flex flex-col gap-y-2 m-3">
-          {Object.values(errors).map((err) => (
-            <div className="flex items-center gap-x-3">
-              <X className="text-red-500" />
-              <p>{err.message}</p>
-            </div>
-          ))}
-        </div>
-      )}
+      <FormErrors errors={errors} />
     </div>
   );
 };

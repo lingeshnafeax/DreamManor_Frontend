@@ -1,4 +1,4 @@
-import { SearchIcon, X } from "lucide-react";
+import { SearchIcon } from "lucide-react";
 import { useState } from "react";
 import { cn } from "../../utils/tailwindMerge";
 
@@ -9,6 +9,7 @@ import { SearchHomeFormValidation } from "../../utils/validations";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormFieldType } from "../../types/CustomFormTypes";
 import { SearchFormDataType } from "../../types/FormDataTypes";
+import FormErrors from "../../components/FormErrors";
 
 const HomeSearch = () => {
   const [searchType, setSearchType] = useState<"Rent" | "Buy">("Rent");
@@ -78,16 +79,7 @@ const HomeSearch = () => {
           <SearchIcon />
         </button>
       </form>
-      {errors && (
-        <div className="mt-3 flex flex-col gap-y-3">
-          {Object.values(errors).map((err) => (
-            <div className="flex items-center gap-x-3">
-              <X className="text-red-500" />
-              <p>{err.message}</p>
-            </div>
-          ))}
-        </div>
-      )}
+      <FormErrors errors={errors} />
     </div>
   );
 };

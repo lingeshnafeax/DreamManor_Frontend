@@ -39,3 +39,26 @@ export const SearchHomeFormValidation = z.object({
     .min(0, { message: "Maximum price should be greater than 0" })
     .max(100000000, { message: "Maximum price should be less than 100000000" }),
 });
+
+export const LoginFormValidation = z.object({
+  username: z
+    .string()
+    .min(3, { message: "Username should be at least 3 characters" })
+    .max(50, { message: "Username should be less than  50 characters" }),
+  password: z
+    .string()
+    .min(8, { message: "Password should be at least 8 characters" })
+    .max(50, { message: "Password should be less than 50 characters" }),
+});
+
+export const RegisterFormValidation = z.object({
+  username: z
+    .string()
+    .min(3, { message: "Username should be at least 3 characters" })
+    .max(50, { message: "Username should be less than  50 characters" }),
+  password: z
+    .string()
+    .min(8, { message: "Password should be at least 8 characters" })
+    .max(50, { message: "Password should be less than 50 characters" }),
+  email: z.string().email({ message: "Please enter a valid email" }),
+});

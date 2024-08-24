@@ -48,6 +48,26 @@ const CustomForm = (props: CustomFormProps) => {
           />
         </>
       );
+    case FormFieldType.EMAIL:
+      return (
+        <input
+          className="border border-black p-3 placeholder:text-black"
+          {...props.register(props.name)}
+          type={fieldType}
+          required
+          placeholder={props.placeholder}
+        />
+      );
+    case FormFieldType.PASSWORD:
+      return (
+        <input
+          className="border border-black p-3 placeholder:text-black"
+          {...props.register(props.name)}
+          type={fieldType}
+          required
+          placeholder={props.placeholder}
+        />
+      );
   }
 };
 
