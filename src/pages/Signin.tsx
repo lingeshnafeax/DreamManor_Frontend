@@ -7,7 +7,14 @@ import { LoginFormData } from "../types/FormDataTypes";
 import CustomForm from "../components/CustomForm";
 import { FormFieldType } from "../types/CustomFormTypes";
 import FormErrors from "../components/FormErrors";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import axiosRequest from "../libs/axiosRequest";
+import { toast } from "react-toastify";
+import { AxiosError } from "axios";
+import Cookie from "js-cookie";
+import { useAppDispatch } from "../hooks/typedRedux";
+import { setToken } from "../store/slices/tokenSlice";
 
 const Signin = () => {
   const {
@@ -18,10 +25,39 @@ const Signin = () => {
     resolver: zodResolver(LoginFormValidation),
     mode: "onSubmit",
   });
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const { mutate: loginUser, isPending } = useMutation({
+    mutationKey: ["loginUser"],
+    mutationFn: async (data: LoginFormData) => {
+      await axiosRequest.post("auth/login", data);
+    },
+    onSuccess: () => {
+      const token = Cookie.get("token");
+      dispatch(setToken(token));
+      navigate("/");
+      toast.success("Sucessfully logged in");
+    },
+    onError: (error: AxiosError) => {
+      switch (error.status) {
+        case 404:
+          toast.error("User not found");
+          break;
+        case 401:
+          toast.error("Wrong password");
+          break;
+        default:
+          toast.error("Something went wrong");
+          break;
+      }
+    },
+  });
 
   const submitHandler = (data: LoginFormData) => {
-    console.log(data);
+    loginUser({ ...data, username: data.username.toLocaleLowerCase() });
   };
+
   return (
     <BackgroundImageLayout>
       <form
@@ -42,10 +78,11 @@ const Signin = () => {
           placeholder="Password"
         />
         <button
+          disabled={isPending}
           type="submit"
           className="border border-black bg-accent px-2 py-2 transition duration-200 ease-in-out hover:bg-black hover:text-accent lg:px-3"
         >
-          Sign up
+          {isPending ? "Loading..." : "Login"}
         </button>
         <FormErrors errors={errors} />
         <p className="py-2">

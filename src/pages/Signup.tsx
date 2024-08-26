@@ -7,7 +7,11 @@ import { RegisterFormData } from "../types/FormDataTypes";
 import CustomForm from "../components/CustomForm";
 import { FormFieldType } from "../types/CustomFormTypes";
 import FormErrors from "../components/FormErrors";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import axiosRequest from "../libs/axiosRequest";
+import { toast } from "react-toastify";
+import { AxiosError } from "axios";
 
 const Signup = () => {
   const {
@@ -19,8 +23,30 @@ const Signup = () => {
     mode: "onSubmit",
   });
 
-  const submitHandler = (data: RegisterFormData) => {
-    console.log(data);
+  const navigate = useNavigate();
+  const { mutate: registerUser, isPending } = useMutation({
+    mutationKey: ["registerUser"],
+    mutationFn: async (userData: RegisterFormData) => {
+      await axiosRequest.post("auth/register", userData);
+    },
+    onError: (error: AxiosError) => {
+      if (error.status === 409) {
+        toast.error("User already exists");
+      } else {
+        toast.error("Something went wrong");
+      }
+    },
+    onSuccess: () => {
+      toast.success("Sucessfully registered");
+      navigate("/signin");
+    },
+  });
+
+  const submitHandler = async (data: RegisterFormData) => {
+    registerUser({
+      ...data,
+      username: data.username.toLocaleLowerCase(),
+    });
   };
   return (
     <BackgroundImageLayout>
@@ -48,10 +74,11 @@ const Signup = () => {
           placeholder="Password"
         />
         <button
+          disabled={isPending}
           type="submit"
           className="border border-black bg-accent px-2 py-2 transition duration-200 ease-in-out hover:bg-black hover:text-accent lg:px-3"
         >
-          Sign up
+          {isPending ? "Registering..." : "Register"}
         </button>
         <FormErrors errors={errors} />
         <p className="py-2">

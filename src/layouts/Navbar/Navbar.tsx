@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import CustomLinks from "../../components/CustomLinks";
 import { userData } from "../../data/dummyData";
-import { useState } from "react";
+import { useAppSelector } from "../../hooks/typedRedux";
 
 const NavBar = () => {
-  const [iosLoggedIn] = useState(false);
+  const token = useAppSelector((state) => state.token.token);
   return (
     <div className="sticky top-0 z-50 flex w-full flex-col">
       <div className="absolute z-50 flex w-full items-center justify-between bg-background p-4">
@@ -26,7 +26,7 @@ const NavBar = () => {
             <CustomLinks to="/agents">Agents</CustomLinks>
           </div>
         </div>
-        {iosLoggedIn ? (
+        {token ? (
           <div className="flex items-center gap-x-6">
             <div className="hidden overflow-hidden sm:block">
               <img
@@ -48,8 +48,10 @@ const NavBar = () => {
           </div>
         ) : (
           <div className="z-50 flex items-center gap-3 lg:gap-6">
-            <button>Sign in</button>
-            <Link to={"/signup"}>
+            <Link to="/signin">
+              <button>Sign in</button>
+            </Link>
+            <Link to="/signup">
               <button className="border border-black bg-accent px-2 py-2 transition duration-200 ease-in-out hover:bg-black hover:text-accent lg:px-3">
                 Sign up
               </button>
