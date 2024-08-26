@@ -11,10 +11,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import axiosRequest from "../libs/axiosRequest";
 import { toast } from "react-toastify";
-import { AxiosError } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import Cookie from "js-cookie";
 import { useAppDispatch } from "../hooks/typedRedux";
 import { setToken } from "../store/slices/tokenSlice";
+import { setUser } from "../store/slices/userSlice";
+import { UserDataType } from "../types/UserDataTypes";
 
 const Signin = () => {
   const {
@@ -31,11 +33,12 @@ const Signin = () => {
   const { mutate: loginUser, isPending } = useMutation({
     mutationKey: ["loginUser"],
     mutationFn: async (data: LoginFormData) => {
-      await axiosRequest.post("auth/login", data);
+      return await axiosRequest.post("auth/login", data);
     },
-    onSuccess: () => {
+    onSuccess: (data: AxiosResponse) => {
       const token = Cookie.get("token");
       dispatch(setToken(token));
+      dispatch(setUser(data.data.user as UserDataType));
       navigate("/");
       toast.success("Sucessfully logged in");
     },

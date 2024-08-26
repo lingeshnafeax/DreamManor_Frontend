@@ -15,8 +15,8 @@ const UserProfile = ({ profile }: { profile: UserDataType }) => {
   return (
     <div className="grid grid-cols-2 items-center gap-y-6 text-sm lg:w-1/4">
       <p>Avatar</p>
-      <img src={profile.img} className="h-10 w-10 rounded-full" alt="" />
-      <p>Username</p> <span className="font-semibold">{profile.name}</span>
+      <img src={profile.avatar} className="h-10 w-10 rounded-full" alt="" />
+      <p>Username</p> <span className="font-semibold">{profile.username}</span>
       <p>Email</p> <span className="font-semibold">{profile.email}</span>
       <button
         onClick={() => Logout()}

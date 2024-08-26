@@ -1,10 +1,20 @@
 import { Link } from "react-router-dom";
 import CustomLinks from "../../components/CustomLinks";
-import { userData } from "../../data/dummyData";
 import { useAppSelector } from "../../hooks/typedRedux";
+import { useQuery } from "@tanstack/react-query";
+import axiosRequest from "../../libs/axiosRequest";
+import { UserDataType } from "../../types/UserDataTypes";
 
 const NavBar = () => {
   const token = useAppSelector((state) => state.token.token);
+  const { data } = useQuery<UserDataType>({
+    queryKey: ["userData"],
+    queryFn: async () => {
+      const response = await axiosRequest.get<UserDataType>("/auth/userInfo");
+      return response.data;
+    },
+    enabled: token !== null,
+  });
   return (
     <div className="sticky top-0 z-50 flex w-full flex-col">
       <div className="absolute z-50 flex w-full items-center justify-between bg-background p-4">
@@ -30,12 +40,12 @@ const NavBar = () => {
           <div className="flex items-center gap-x-6">
             <div className="hidden overflow-hidden sm:block">
               <img
-                src={userData.img}
+                src={data?.avatar}
                 className="h-10 w-10 rounded-full object-cover"
                 alt=""
               />
             </div>
-            <p className="font-bold">{userData.name}</p>
+            <p className="font-bold capitalize">{data?.username}</p>
 
             <Link to={"/profile"}>
               <button className="relative border border-black bg-accent p-2">

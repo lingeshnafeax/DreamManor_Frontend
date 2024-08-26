@@ -27,7 +27,7 @@ const Signup = () => {
   const { mutate: registerUser, isPending } = useMutation({
     mutationKey: ["registerUser"],
     mutationFn: async (userData: RegisterFormData) => {
-      await axiosRequest.post("auth/register", userData);
+      return await axiosRequest.post("auth/register", userData);
     },
     onError: (error: AxiosError) => {
       if (error.status === 409) {
