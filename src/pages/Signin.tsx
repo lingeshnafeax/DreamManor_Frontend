@@ -33,7 +33,7 @@ const Signin = () => {
   const { mutate: loginUser, isPending } = useMutation({
     mutationKey: ["loginUser"],
     mutationFn: async (data: LoginFormData) => {
-      return await axiosRequest.post("auth/login", data);
+      return await axiosRequest.post("/auth/login", data);
     },
     onSuccess: (data: AxiosResponse) => {
       const token = Cookie.get("token");

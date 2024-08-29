@@ -18,7 +18,7 @@ export interface CustomFormProps {
   register: UseFormRegister<any>;
   fieldType: FormFieldType;
   name: string;
-  required?: boolean;
+  isRequired?: boolean;
   selectOptions?: string[] | number[];
   placeholder?: string;
   label?: string;

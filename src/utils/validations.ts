@@ -62,3 +62,32 @@ export const RegisterFormValidation = z.object({
     .max(50, { message: "Password should be less than 50 characters" }),
   email: z.string().email({ message: "Please enter a valid email" }),
 });
+
+export const UpdateFormValidation = z
+  .object({
+    username: z
+      .string()
+      .min(3, { message: "Username should be at least 3 characters" })
+      .max(50, { message: "Username should be less than  50 characters" })
+      .optional()
+      .or(z.literal("")),
+    password: z
+      .string()
+      .min(8, { message: "Password should be at least 8 characters" })
+      .max(50, { message: "Password should be less than 50 characters" })
+      .optional()
+      .or(z.literal("")),
+    email: z
+      .string()
+      .email({ message: "Please enter a valid email" })
+      .optional()
+      .or(z.literal("")),
+  })
+  .refine(
+    (data) => {
+      return (
+        data.username?.trim() || data.email?.trim() || data.password?.trim()
+      );
+    },
+    { message: "At least one field should be updated" },
+  );

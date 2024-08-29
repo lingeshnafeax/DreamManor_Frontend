@@ -5,7 +5,7 @@ import { UserDataType } from "../types/UserDataTypes";
 
 export const useFetchUserData = () => {
   const token = useAppSelector((state) => state.token.token);
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["userData"],
     queryFn: async () => {
       const response = await axiosRequest.get("/auth/userInfo");
@@ -19,7 +19,7 @@ export const useFetchUserData = () => {
         username: user.username,
       } as UserDataType;
     },
-    enabled: token !== null,
+    enabled: Boolean(token),
   });
-  return { data };
+  return { data, isLoading };
 };

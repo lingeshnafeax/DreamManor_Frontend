@@ -1,7 +1,8 @@
 import { CustomFormProps, FormFieldType } from "../types/CustomFormTypes";
 
 const CustomForm = (props: CustomFormProps) => {
-  const { fieldType } = props;
+  const { fieldType, isRequired = true } = props;
+
   switch (fieldType) {
     case FormFieldType.TEXT:
       return (
@@ -12,8 +13,8 @@ const CustomForm = (props: CustomFormProps) => {
           <input
             className="border border-black p-3 placeholder:text-black"
             type={fieldType}
-            required
-            defaultValue={props.defaultValue}
+            required={isRequired}
+            defaultValue={props?.defaultValue}
             placeholder={props.placeholder}
             {...props.register(props.name)}
           />
@@ -28,7 +29,7 @@ const CustomForm = (props: CustomFormProps) => {
           <select
             className="no-arrow border border-black p-3 placeholder:text-black"
             defaultValue={props.selectOptions?.[0]}
-            required
+            required={isRequired}
             {...props.register(props.name)}
           >
             {props.selectOptions?.map((value) => {
@@ -48,8 +49,8 @@ const CustomForm = (props: CustomFormProps) => {
             <label className="text-xl font-semibold">{props.label}</label>
           )}
           <input
-            required
-            defaultValue={props.defaultValue}
+            required={isRequired}
+            defaultValue={props?.defaultValue}
             className="border border-black p-3 placeholder:text-black"
             type={fieldType}
             placeholder={props.placeholder}
@@ -66,11 +67,11 @@ const CustomForm = (props: CustomFormProps) => {
             <label className="text-xl font-semibold">{props.label}</label>
           )}
           <input
-            defaultValue={props.defaultValue}
+            defaultValue={props?.defaultValue}
             className="border border-black p-3 placeholder:text-black"
             {...props.register(props.name)}
             type={fieldType}
-            required
+            required={isRequired}
             placeholder={props.placeholder}
           />
         </div>
@@ -85,8 +86,8 @@ const CustomForm = (props: CustomFormProps) => {
             className="border border-black p-3 placeholder:text-black"
             {...props.register(props.name)}
             type={fieldType}
-            required
-            defaultValue={props.defaultValue}
+            required={isRequired}
+            defaultValue={props?.defaultValue}
             placeholder={props.placeholder}
           />
         </div>
