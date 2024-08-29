@@ -21,3 +21,9 @@ export interface LoginFormData {
 export interface RegisterFormData extends LoginFormData {
   email: string;
 }
+
+export interface UpdateFormData {
+  username?: string;
+  email?: string;
+  password?: string;
+}

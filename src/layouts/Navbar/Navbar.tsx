@@ -1,20 +1,11 @@
 import { Link } from "react-router-dom";
 import CustomLinks from "../../components/CustomLinks";
+import { useFetchUserData } from "../../hooks/useFetchUserData";
 import { useAppSelector } from "../../hooks/typedRedux";
-import { useQuery } from "@tanstack/react-query";
-import axiosRequest from "../../libs/axiosRequest";
-import { UserDataType } from "../../types/UserDataTypes";
 
 const NavBar = () => {
   const token = useAppSelector((state) => state.token.token);
-  const { data } = useQuery<UserDataType>({
-    queryKey: ["userData"],
-    queryFn: async () => {
-      const response = await axiosRequest.get<UserDataType>("/auth/userInfo");
-      return response.data;
-    },
-    enabled: token !== null,
-  });
+  const { data } = useFetchUserData();
   return (
     <div className="sticky top-0 z-50 flex w-full flex-col">
       <div className="absolute z-50 flex w-full items-center justify-between bg-background p-4">

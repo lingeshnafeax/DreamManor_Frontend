@@ -5,19 +5,26 @@ const CustomForm = (props: CustomFormProps) => {
   switch (fieldType) {
     case FormFieldType.TEXT:
       return (
-        <>
+        <div className="flex flex-col gap-y-3">
+          {props.label && (
+            <label className="text-xl font-semibold">{props.label}</label>
+          )}
           <input
             className="border border-black p-3 placeholder:text-black"
             type={fieldType}
             required
+            defaultValue={props.defaultValue}
             placeholder={props.placeholder}
             {...props.register(props.name)}
           />
-        </>
+        </div>
       );
     case FormFieldType.SELECT:
       return (
-        <>
+        <div className="flex flex-col gap-y-3">
+          {props.label && (
+            <label className="text-xl font-semibold">{props.label}</label>
+          )}
           <select
             className="no-arrow border border-black p-3 placeholder:text-black"
             defaultValue={props.selectOptions?.[0]}
@@ -32,13 +39,17 @@ const CustomForm = (props: CustomFormProps) => {
               );
             })}
           </select>
-        </>
+        </div>
       );
     case FormFieldType.NUMBER:
       return (
-        <>
+        <div className="flex flex-col gap-y-3">
+          {props.label && (
+            <label className="text-xl font-semibold">{props.label}</label>
+          )}
           <input
             required
+            defaultValue={props.defaultValue}
             className="border border-black p-3 placeholder:text-black"
             type={fieldType}
             placeholder={props.placeholder}
@@ -46,27 +57,39 @@ const CustomForm = (props: CustomFormProps) => {
               setValueAs: (value) => (isNaN(value) ? 0 : Number(value)),
             })}
           />
-        </>
+        </div>
       );
     case FormFieldType.EMAIL:
       return (
-        <input
-          className="border border-black p-3 placeholder:text-black"
-          {...props.register(props.name)}
-          type={fieldType}
-          required
-          placeholder={props.placeholder}
-        />
+        <div className="flex flex-col gap-y-3">
+          {props.label && (
+            <label className="text-xl font-semibold">{props.label}</label>
+          )}
+          <input
+            defaultValue={props.defaultValue}
+            className="border border-black p-3 placeholder:text-black"
+            {...props.register(props.name)}
+            type={fieldType}
+            required
+            placeholder={props.placeholder}
+          />
+        </div>
       );
     case FormFieldType.PASSWORD:
       return (
-        <input
-          className="border border-black p-3 placeholder:text-black"
-          {...props.register(props.name)}
-          type={fieldType}
-          required
-          placeholder={props.placeholder}
-        />
+        <div className="flex flex-col gap-y-3">
+          {props.label && (
+            <label className="text-xl font-semibold">{props.label}</label>
+          )}
+          <input
+            className="border border-black p-3 placeholder:text-black"
+            {...props.register(props.name)}
+            type={fieldType}
+            required
+            defaultValue={props.defaultValue}
+            placeholder={props.placeholder}
+          />
+        </div>
       );
   }
 };

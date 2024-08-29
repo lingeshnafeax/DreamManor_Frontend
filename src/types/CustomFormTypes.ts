@@ -20,6 +20,7 @@ export interface CustomFormProps {
   name: string;
   required?: boolean;
   selectOptions?: string[] | number[];
-  placeholder: string;
+  placeholder?: string;
   label?: string;
+  defaultValue?: string;
 }

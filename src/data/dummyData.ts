@@ -88,7 +88,7 @@ export const dummyListData: ListHouseDataType[] = [
   },
 ];
 
-export const singlePostData:SinglePostDataType = {
+export const singlePostData: SinglePostDataType = {
   id: 1,
   title: "Luxury Penthouse",
   images: [
@@ -113,10 +113,10 @@ export const singlePostData:SinglePostDataType = {
   longitude: -73.9762,
 };
 
-export const userData:UserDataType = {
+export const userData: UserDataType = {
   id: 1,
-  name: "Lingesh",
-  img:
+  username: "Lingesh",
+  avatar:
     "https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/03/15/15/andrew-garfield.jpg",
-  email:"wlingesh260@gmail.com"
+  email: "wlingesh260@gmail.com",
 };

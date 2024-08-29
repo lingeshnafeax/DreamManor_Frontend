@@ -1,6 +1,6 @@
 export type UserDataType = {
-  id: string;
+  id: string | number;
   username: string;
-  avatar: string;
+  avatar?: string;
   email: string;
 };

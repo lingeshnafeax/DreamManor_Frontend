@@ -52,7 +52,7 @@ const Signup = () => {
     <BackgroundImageLayout>
       <form
         onSubmit={handleSubmit(submitHandler)}
-        className="flex flex-col lg:mx-48"
+        className="flex flex-col gap-y-2 lg:mx-48"
       >
         <h1 className="text-center text-2xl font-bold lg:my-10">Register</h1>
         <CustomForm

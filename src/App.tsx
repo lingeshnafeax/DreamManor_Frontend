@@ -14,6 +14,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import ProtectedRoute from "./components/ProtectedRoute";
+import UpdateProfile from "./pages/UpdateProfile";
 const App = () => {
   return (
     <Provider store={store}>
@@ -30,6 +31,10 @@ const App = () => {
             <Route
               path="/profile"
               element={<ProtectedRoute element={<SellerProfile />} />}
+            />
+            <Route
+              path="/profile/update"
+              element={<ProtectedRoute element={<UpdateProfile />} />}
             />
           </Routes>
         </div>

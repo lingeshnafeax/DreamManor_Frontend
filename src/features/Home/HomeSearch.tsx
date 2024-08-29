@@ -75,7 +75,7 @@ const HomeSearch = () => {
         <button
           type="submit"
           className="flex w-full items-center justify-center bg-accent p-2 transition duration-200 ease-in-out hover:bg-black hover:text-accent"
-        >
+        > 
           <SearchIcon />
         </button>
       </form>
