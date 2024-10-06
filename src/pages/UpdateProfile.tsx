@@ -12,6 +12,8 @@ import { UpdateFormData } from "../types/FormDataTypes";
 import { toast } from "react-toastify";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axiosRequest from "../libs/axiosRequest";
+import UploadWidget from "../components/UploadWidget";
+import { useState } from "react";
 const UpdateProfile = () => {
   const { data, isLoading } = useFetchUserData();
   const {
@@ -26,6 +28,7 @@ const UpdateProfile = () => {
       password: "",
     },
   });
+  const [avatar, setAvatar] = useState("");
   const queryClient = useQueryClient();
   const updateUser = useMutation({
     mutationKey: ["updateUser"],
@@ -42,6 +45,7 @@ const UpdateProfile = () => {
       username: data?.username || "",
       email: data?.email || "",
       password: "",
+      avatar: data?.avatar || "",
     };
     const updatedFields: Partial<UpdateFormData> = {};
 
@@ -54,7 +58,9 @@ const UpdateProfile = () => {
     if (formData.password !== "") {
       updatedFields.password = formData.password;
     }
-
+    if (avatar && avatar.length > 0 && avatar !== initialData?.avatar) {
+      updatedFields.avatar = avatar;
+    }
     if (Object.keys(updatedFields).length > 0) {
       updateUser.mutate(updatedFields);
     } else {
@@ -66,9 +72,11 @@ const UpdateProfile = () => {
 
   return (
     <BackgroundImageLayout
-      source={data?.avatar}
-      className="flex items-center justify-center"
+      source={avatar.length > 0 ? avatar : data?.avatar}
+      className="mt-48 flex h-96 items-center justify-center"
     >
+      <h1 className="text-3xl font-semibold">Update your profile</h1>
+      <p>Please make sure to press update after making changes!</p>
       <form
         onSubmit={handleSubmit(submitHandler)}
         className="flex flex-col gap-y-6"
@@ -96,8 +104,21 @@ const UpdateProfile = () => {
           label="Password"
           isRequired={false}
         />
-        <button className="border border-black bg-accent p-2">Update</button>
+
+        <button className="border border-black bg-accent p-2">
+          Apply Changes
+        </button>
       </form>
+      <UploadWidget
+        uwConfig={{
+          cloudName: "dhj4k72me",
+          uploadPreset: "uw_test",
+          multiple: false,
+          maxImageFileSize: 200000,
+          folders: "avatars",
+        }}
+        setAvatar={setAvatar}
+      />
       <FormErrors errors={errors} />
     </BackgroundImageLayout>
   );

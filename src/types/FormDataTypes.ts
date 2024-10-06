@@ -26,4 +26,5 @@ export interface UpdateFormData {
   username?: string;
   email?: string;
   password?: string;
+  avatar?: string;
 }

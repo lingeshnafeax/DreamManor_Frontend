@@ -68,6 +68,7 @@ const Signin = () => {
         className="flex flex-col lg:mx-48"
       >
         <h1 className="text-center text-2xl font-bold lg:my-10">Login</h1>
+        <p className="my-3 ">Login to explore your dream house</p>
         <CustomForm
           register={register}
           fieldType={FormFieldType.TEXT}
