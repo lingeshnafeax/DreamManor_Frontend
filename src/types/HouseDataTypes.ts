@@ -1,7 +1,7 @@
 export type ListHouseDataType = {
   id: number;
   title: string;
-  image: string;
+  images: string[];
   bedroom: number;
   bathroom: number;
   price: number;

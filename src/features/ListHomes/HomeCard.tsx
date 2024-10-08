@@ -5,12 +5,12 @@ const HomeCard = ({ data }: { data: ListHouseDataType }) => {
   return (
     <Link
       to={`/list/${data.id}`}
-      className="group grid transition rounded-lg duration-200 ease-in-out hover:bg-accent/10 md:grid-cols-2 lg:grid-cols-3"
+      className="group grid rounded-lg transition duration-200 ease-in-out hover:bg-accent/10 md:grid-cols-2 lg:grid-cols-3"
     >
       <div className="overflow-hidden">
         <img
-          src={data.image}
-          className="h-full rounded-lg w-full transition-transform duration-300 ease-in-out group-hover:scale-105"
+          src={data.images[0]}
+          className="h-full w-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-105"
           alt=""
         />
       </div>

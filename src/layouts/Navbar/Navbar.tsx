@@ -41,7 +41,7 @@ const NavBar = () => {
             <Link to={"/profile"}>
               <button className="relative border border-black bg-accent p-2">
                 Profile
-                <span className="absolute -right-4 -top-4 rounded-full bg-black p-1 px-3 text-white">
+                <span className="absolute -right-4 -top-4 rounded-full bg-red-600 p-1 px-3 text-white">
                   2
                 </span>
               </button>

@@ -5,8 +5,9 @@ export const dummyListData: ListHouseDataType[] = [
   {
     id: 1,
     title: "Luxury Penthouse",
-    image:
+    images: [
       "https://www.properties.market/in/blog/wp-content/uploads/2024/01/5-Most-Lavish-And-Expensive-Celebrity-Owned-Houses-In-Hyderabad-1200x675.png",
+    ],
     bedroom: 3,
     bathroom: 2,
     price: 2500000,
@@ -17,8 +18,9 @@ export const dummyListData: ListHouseDataType[] = [
   {
     id: 2,
     title: "Modern Loft",
-    image:
+    images: [
       "https://www.properties.market/in/blog/wp-content/uploads/2024/01/5-Most-Lavish-And-Expensive-Celebrity-Owned-Houses-In-Hyderabad-1200x675.png",
+    ],
     bedroom: 2,
     bathroom: 1,
     price: 1800000,
@@ -29,8 +31,9 @@ export const dummyListData: ListHouseDataType[] = [
   {
     id: 3,
     title: "Cozy Cottage",
-    image:
+    images: [
       "https://www.properties.market/in/blog/wp-content/uploads/2024/01/5-Most-Lavish-And-Expensive-Celebrity-Owned-Houses-In-Hyderabad-1200x675.png",
+    ],
     bedroom: 4,
     bathroom: 3,
     price: 1200000,
@@ -41,8 +44,9 @@ export const dummyListData: ListHouseDataType[] = [
   {
     id: 4,
     title: "Charming Brownstone",
-    image:
+    images: [
       "https://www.properties.market/in/blog/wp-content/uploads/2024/01/5-Most-Lavish-And-Expensive-Celebrity-Owned-Houses-In-Hyderabad-1200x675.png",
+    ],
     bedroom: 3,
     bathroom: 2,
     price: 2200000,
@@ -53,8 +57,9 @@ export const dummyListData: ListHouseDataType[] = [
   {
     id: 5,
     title: "Spacious Suburban Home",
-    image:
+    images: [
       "https://www.properties.market/in/blog/wp-content/uploads/2024/01/5-Most-Lavish-And-Expensive-Celebrity-Owned-Houses-In-Hyderabad-1200x675.png",
+    ],
     bedroom: 5,
     bathroom: 4,
     price: 3200000,
@@ -65,8 +70,9 @@ export const dummyListData: ListHouseDataType[] = [
   {
     id: 6,
     title: "Elegant Townhouse",
-    image:
+    images: [
       "https://www.properties.market/in/blog/wp-content/uploads/2024/01/5-Most-Lavish-And-Expensive-Celebrity-Owned-Houses-In-Hyderabad-1200x675.png",
+    ],
     bedroom: 4,
     bathroom: 3,
     price: 2800000,
@@ -77,8 +83,9 @@ export const dummyListData: ListHouseDataType[] = [
   {
     id: 7,
     title: "Urban Studio",
-    image:
+    images: [
       "https://www.properties.market/in/blog/wp-content/uploads/2024/01/5-Most-Lavish-And-Expensive-Celebrity-Owned-Houses-In-Hyderabad-1200x675.png",
+    ],
     bedroom: 1,
     bathroom: 1,
     price: 950000,
