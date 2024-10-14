@@ -47,4 +47,6 @@ export interface AddHouseFormData {
   school?: number;
   bus?: number;
   restaurant?: number;
+  latitude: number;
+  longitude: number;
 }

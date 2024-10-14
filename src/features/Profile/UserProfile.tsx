@@ -1,23 +1,10 @@
-import { useMutation } from "@tanstack/react-query";
 import { UserDataType } from "../../types/UserDataTypes";
-import axiosRequest from "../../libs/axiosRequest";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../hooks/typedRedux";
-import { setToken } from "../../store/slices/tokenSlice";
+import { useUserLogout } from "./hooks/useUserLogout";
 
 const UserProfile = ({ profile }: { profile: UserDataType }) => {
+  const { isPending, Logout } = useUserLogout();
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-  const { isPending, mutate: Logout } = useMutation({
-    mutationKey: ["logoutUser"],
-    mutationFn: async () => {
-      await axiosRequest.post("auth/logout");
-      navigate("/signin");
-    },
-    onSuccess: () => {
-      dispatch(setToken(null));
-    },
-  });
 
   return (
     <div className="grid grid-cols-2 items-center gap-x-4 gap-y-6 text-sm lg:w-1/2">

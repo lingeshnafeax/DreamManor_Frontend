@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import UploadWidget from "../components/UploadWidget";
 import FormErrors from "../components/FormErrors";
 import { AddHouseFormData } from "../types/FormDataTypes";
+import { useAddHouse } from "../features/AddHome/hooks/useAddHouse";
 
 const AddHome = () => {
   const {
@@ -13,6 +14,7 @@ const AddHome = () => {
     formState: { errors },
     handleSubmit,
     setValue,
+    reset,
   } = useForm<AddHouseFormData>({
     mode: "onSubmit",
   });
@@ -21,19 +23,35 @@ const AddHome = () => {
   const descriptionOnChange = (value: string) => {
     setValue("desc", value);
   };
+  const { mutate, isSuccess, isPending } = useAddHouse();
 
   const submitHandler = (data: AddHouseFormData) => {
-    console.log(data);
+    mutate(data);
+    if (isSuccess) {
+      reset();
+    }
   };
 
   useEffect(() => {
     register("desc", { required: "Description is required" });
     register("images", { required: "Images are required" });
+    register("latitude", { required: "Latitude is required" });
+    register("longitude", { required: "Longitude is required" });
   }, [register]);
 
   useEffect(() => {
     setValue("images", postImages);
   }, [postImages, setValue]);
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const { latitude, longitude } = position.coords;
+        setValue("latitude", latitude);
+        setValue("longitude", longitude);
+      });
+    }
+  });
 
   return (
     <div className="mx-4 flex flex-col pt-20 lg:gap-y-3 lg:pt-24">
@@ -57,6 +75,7 @@ const AddHome = () => {
         </div>
         <div className="flex flex-col gap-y-3">
           <label className="text-xl font-semibold">Images</label>
+          <p className="text-sm">Please upload at least 4 images 🥺</p>
           <div className="flex flex-wrap gap-3">
             {postImages &&
               postImages.length > 0 &&
@@ -195,10 +214,11 @@ const AddHome = () => {
 
         <div className="flex justify-center pt-6">
           <button
+            disabled={isPending}
             className="h-fit w-full border border-black bg-accent p-2"
             type="submit"
           >
-            Submit
+            {`${isPending ? "Adding..." : "Add Home"}`}
           </button>
         </div>
       </form>
