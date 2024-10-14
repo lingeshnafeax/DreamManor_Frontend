@@ -28,3 +28,23 @@ export interface UpdateFormData {
   password?: string;
   avatar?: string;
 }
+
+export interface AddHouseFormData {
+  title: string;
+  price: number;
+  desc: string;
+  images: string[];
+  address: string;
+  city: string;
+  bedroom: number;
+  bathroom: number;
+  type: string;
+  property: string;
+  utilities?: string;
+  pet?: string;
+  income?: string;
+  size?: number;
+  school?: number;
+  bus?: number;
+  restaurant?: number;
+}

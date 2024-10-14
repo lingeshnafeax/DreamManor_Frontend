@@ -15,6 +15,7 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 import ProtectedRoute from "./components/ProtectedRoute";
 import UpdateProfile from "./pages/UpdateProfile";
+import AddHome from "./pages/AddHome";
 const App = () => {
   return (
     <Provider store={store}>
@@ -28,6 +29,7 @@ const App = () => {
             <Route path="/signin" element={<Signin />} />
             <Route path="/list" element={<ListHomes />} />
             <Route path="/list/:id" element={<HomeDetails />} />
+            <Route path="/addHouse" element={<AddHome />} />
             <Route
               path="/profile"
               element={<ProtectedRoute element={<SellerProfile />} />}

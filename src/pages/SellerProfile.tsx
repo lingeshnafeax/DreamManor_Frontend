@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { dummyListData } from "../data/dummyData";
 import HomeCard from "../features/ListHomes/HomeCard";
 import Message from "../features/Profile/Message";
@@ -17,9 +18,9 @@ const SellerProfile = () => {
         <div className="space-y-3">
           <div className="flex items-center justify-between">
             <h1 className="my-5 text-2xl font-semibold">My List</h1>
-            <button className="h-fit border border-black bg-accent p-2">
+            <Link to="/addHouse" className="h-fit border border-black bg-accent p-2">
               Add House
-            </button>
+            </Link>
           </div>
           <div className="flex flex-col gap-y-6">
             {dummyListData.map((data: ListHouseDataType, index) => {

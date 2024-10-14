@@ -117,7 +117,7 @@ const UpdateProfile = () => {
           maxImageFileSize: 200000,
           folders: "avatars",
         }}
-        setAvatar={setAvatar}
+        setState={setAvatar}
       />
       <FormErrors errors={errors} />
     </BackgroundImageLayout>
