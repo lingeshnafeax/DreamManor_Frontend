@@ -5,8 +5,10 @@ import TextEditor from "../components/TextEditor";
 import { useEffect, useState } from "react";
 import UploadWidget from "../components/UploadWidget";
 import FormErrors from "../components/FormErrors";
-import { AddHouseFormData } from "../types/FormDataTypes";
 import { useAddHouse } from "../features/AddHome/hooks/useAddHouse";
+import { z } from "zod";
+import { AddHouseFormDataSchema } from "../utils/validations";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const AddHome = () => {
   const {
@@ -15,8 +17,9 @@ const AddHome = () => {
     handleSubmit,
     setValue,
     reset,
-  } = useForm<AddHouseFormData>({
+  } = useForm<z.infer<typeof AddHouseFormDataSchema>>({
     mode: "onSubmit",
+    resolver: zodResolver(AddHouseFormDataSchema),
   });
   const [postImages, setPostImages] = useState<string[]>([]);
 
@@ -25,7 +28,7 @@ const AddHome = () => {
   };
   const { mutate, isSuccess, isPending } = useAddHouse();
 
-  const submitHandler = (data: AddHouseFormData) => {
+  const submitHandler = (data: z.infer<typeof AddHouseFormDataSchema>) => {
     mutate(data);
     if (isSuccess) {
       reset();
@@ -54,7 +57,7 @@ const AddHome = () => {
   });
 
   return (
-    <div className="mx-4 flex flex-col pt-20 lg:gap-y-3 lg:pt-24">
+    <div className="mx-4 flex flex-col pt-20 lg:gap-y-3 lg:pb-12 lg:pt-24">
       <h1 className="text-3xl font-semibold">List a new house 👋</h1>
       <p>Please ensure to fill all the necessary fields!!</p>
       <form

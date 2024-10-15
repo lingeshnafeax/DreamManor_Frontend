@@ -9,7 +9,7 @@ const HomeMapPin = ({
 }: {
   position: LatLngExpression;
   image: string;
-  id: number;
+  id: string;
 }) => {
   return (
     <Marker position={position}>

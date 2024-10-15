@@ -1,21 +1,27 @@
-import { MapPin } from "lucide-react";
+import { Loader, MapPin } from "lucide-react";
 import HomeMap from "../components/HomeMap";
 import HomeCard from "../features/ListHomes/HomeCard";
 import HomeFilter from "../features/ListHomes/HomeFilter";
-import { dummyListData } from "../data/dummyData";
 import { ListHouseDataType } from "../types/HouseDataTypes";
 import { useListedHouseData } from "../features/ListHomes/hooks/useListedHouses";
 
 const ListHomes = () => {
-  const { data } = useListedHouseData();
-  console.log(data);
+  const { data: HouseData, isLoading } = useListedHouseData();
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center">
+        <Loader />
+      </div>
+    );
+  }
   return (
     <div className="relative grid h-full px-5 pt-16 lg:grid-cols-3 lg:pt-24">
       <div className="flex flex-col gap-y-3 overflow-y-auto lg:col-span-2 lg:gap-y-6">
         <HomeFilter />
-        {dummyListData.map((data: ListHouseDataType) => (
-          <HomeCard key={data.id} data={data} />
-        ))}
+        {HouseData &&
+          HouseData.map((data: ListHouseDataType) => (
+            <HomeCard key={data.id} data={data} />
+          ))}
       </div>
 
       <div className="relative">
@@ -25,7 +31,7 @@ const ListHomes = () => {
             <span className="font-semibold">Nearby houses</span>
           </h1>
 
-          <HomeMap />
+          <HomeMap data={HouseData!} />
         </div>
       </div>
     </div>

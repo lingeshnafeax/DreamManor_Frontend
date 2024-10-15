@@ -1,10 +1,12 @@
 const FeaturesCard = ({
   heading,
   description,
+  type = "info",
   logo,
 }: {
   heading?: string;
-  description: string;
+  type?: "info" | "distance";
+  description: number | string;
   logo: JSX.Element;
 }) => {
   return (
@@ -12,7 +14,9 @@ const FeaturesCard = ({
       <div>{logo}</div>
       <div>
         {heading && <p className="text-md">{heading}</p>}
-        <h1 className="text-xs">{description}</h1>
+        <h1 className="text-xs">
+          {description} {type === "distance" ? "kms away" : ""}
+        </h1>
       </div>
     </div>
   );

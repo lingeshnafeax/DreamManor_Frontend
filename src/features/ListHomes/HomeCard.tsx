@@ -10,7 +10,7 @@ const HomeCard = ({ data }: { data: ListHouseDataType }) => {
       <div className="overflow-hidden">
         <img
           src={data.images[0]}
-          className="h-full w-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-105"
+          className="h-52 w-80 rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-105"
           alt=""
         />
       </div>

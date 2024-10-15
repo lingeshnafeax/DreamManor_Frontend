@@ -91,3 +91,44 @@ export const UpdateFormValidation = z
     },
     { message: "At least one field should be updated" },
   );
+
+export const AddHouseFormDataSchema = z.object({
+  title: z.string().min(1, { message: "Title is required" }),
+  price: z.number().positive({ message: "Price must be a positive number" }),
+  desc: z.string().min(1, { message: "Description is required" }),
+  images: z
+    .array(z.string().url({ message: "Invalid image URL" }))
+    .min(1, { message: "At least one image is required" }),
+  address: z.string().min(1, { message: "Address is required" }),
+  city: z.string().min(1, { message: "City is required" }),
+  bedroom: z
+    .number()
+    .int()
+    .max(6, { message: "Bedroom count should be less than 6" })
+    .positive({ message: "Bedroom count must be a positive integer" }),
+  bathroom: z
+    .number()
+    .int()
+    .max(6, { message: "Bathroom count should be less than 6" })
+    .positive({ message: "Bathroom count must be a positive integer" }),
+  type: z.string().min(1, { message: "Type is required" }),
+  property: z.string().min(1, { message: "Property is required" }),
+
+  // Optional fields
+  utilities: z.string().optional(),
+  pet: z.string().optional(),
+  income: z.string().optional(),
+  size: z.number().int().positive().optional(),
+  school: z.number().int().positive().optional(),
+  bus: z.number().int().positive().optional(),
+  restaurant: z.number().int().positive().optional(),
+
+  latitude: z
+    .number()
+    .min(-90)
+    .max(90, { message: "Latitude must be between -90 and 90" }),
+  longitude: z
+    .number()
+    .min(-180)
+    .max(180, { message: "Longitude must be between -180 and 180" }),
+});

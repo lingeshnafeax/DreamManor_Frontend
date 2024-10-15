@@ -1,11 +1,12 @@
 import { useMutation } from "@tanstack/react-query";
 import axiosRequest from "../../../libs/axiosRequest";
-import { AddHouseFormData } from "../../../types/FormDataTypes";
 import { toast } from "react-toastify";
+import { AddHouseFormDataSchema } from "../../../utils/validations";
+import { z } from "zod";
 
 export const useAddHouse = () => {
   const { mutate, isPending, isSuccess } = useMutation({
-    mutationFn: async (data: AddHouseFormData) => {
+    mutationFn: async (data: z.infer<typeof AddHouseFormDataSchema>) => {
       await axiosRequest.post("post", {
         postData: {
           title: data.title,
