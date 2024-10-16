@@ -1,14 +1,14 @@
 import { z } from "zod";
 
 export const FilterHomeFormValidation = z.object({
-  location: z
+  city: z
     .string()
     .min(3, { message: "Location should be at least 3 characters" })
     .max(50, {
       message: "Location should be less than  50 characters",
     }),
-  type: z.enum(["Buy", "Rent"]),
-  category: z.enum(["Home", "Appartment", "Plot"]),
+  type: z.enum(["buy", "rent"]),
+  category: z.enum(["house", "apartment", "condo", "land"]),
   minPrice: z
     .number()
     .min(0, { message: "Minimum price should be greater than 0" })
@@ -24,7 +24,7 @@ export const FilterHomeFormValidation = z.object({
 });
 
 export const SearchHomeFormValidation = z.object({
-  location: z
+  city: z
     .string()
     .min(3, { message: "Location should be at least 3 characters" })
     .max(50, {

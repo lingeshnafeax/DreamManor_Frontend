@@ -18,11 +18,11 @@ const HomeCard = ({ data }: { data: ListHouseDataType }) => {
         <h1 className="text-xl font-semibold">{data.title}</h1>
         <p className="flex items-center gap-x-1">
           <MapPin className="lg:size-5" />
-          <span>{data.address}</span>
+          <span>{data.address}</span>,<span>{data.city}</span>
         </p>
         <div>
           <span className="border border-black bg-accent p-2">
-            $ {data.price}
+            ₹ {data.price}
           </span>
         </div>
         <div className="flex flex-wrap items-center justify-between gap-y-3">

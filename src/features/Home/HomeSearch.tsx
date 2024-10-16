@@ -8,11 +8,12 @@ import { z } from "zod";
 import { SearchHomeFormValidation } from "../../utils/validations";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormFieldType } from "../../types/CustomFormTypes";
-import { SearchFormDataType } from "../../types/FormDataTypes";
 import FormErrors from "../../components/FormErrors";
+import { useNavigate } from "react-router-dom";
 
 const HomeSearch = () => {
-  const [searchType, setSearchType] = useState<"Rent" | "Buy">("Rent");
+  const [searchType, setSearchType] = useState<"rent" | "buy">("rent");
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -22,42 +23,53 @@ const HomeSearch = () => {
     mode: "onSubmit",
   });
 
-  const submitHandler = (data: SearchFormDataType) => {
-    console.log(data);
+  const submitHandler = (data: z.infer<typeof SearchHomeFormValidation>) => {
+    const searchParams = new URLSearchParams({
+      city: data.city!,
+      minPrice: data.minPrice!.toString(),
+      maxPrice: data.maxPrice!.toString(),
+    });
+
+    navigate({
+      pathname: "/list",
+      search: `${searchParams.toString()}`,
+    });
   };
 
   return (
     <div className="flex w-full flex-wrap">
       <button
         className={cn("px-8 py-3 transition duration-200 ease-linear", {
-          "bg-black text-white": searchType === "Buy",
+          "bg-black text-white": searchType === "buy",
         })}
         onClick={() => {
-          setSearchType("Buy");
+          setSearchType("buy");
         }}
       >
         Buy
       </button>
       <button
         className={cn("px-8 py-3 transition duration-200 ease-linear", {
-          "bg-black text-white": searchType === "Rent",
+          "bg-black text-white": searchType === "rent",
         })}
         onClick={() => {
-          setSearchType("Rent");
+          setSearchType("rent");
         }}
       >
         Rent
       </button>
       <form
-        onSubmit={handleSubmit((data) => {
-          submitHandler(data);
-        })}
+        onSubmit={handleSubmit(
+          (data: z.infer<typeof SearchHomeFormValidation>) => {
+            submitHandler(data);
+          },
+        )}
         className="grid w-full flex-wrap border border-black sm:grid-cols-4"
       >
         <CustomForm
           register={register}
           fieldType={FormFieldType.TEXT}
-          name="location"
+          name="city"
           placeholder="Location City"
         />
         <CustomForm
@@ -75,7 +87,7 @@ const HomeSearch = () => {
         <button
           type="submit"
           className="flex w-full items-center justify-center bg-accent p-2 transition duration-200 ease-in-out hover:bg-black hover:text-accent"
-        > 
+        >
           <SearchIcon />
         </button>
       </form>

@@ -4,15 +4,25 @@ import Message from "../features/Profile/Message";
 import UserProfile from "../features/Profile/UserProfile";
 import { useFetchUserData } from "../hooks/useFetchUserData";
 import { useListedHouseData } from "../features/ListHomes/hooks/useListedHouses";
+import { Frown, Loader } from "lucide-react";
 
 const SellerProfile = () => {
   const { data: UserData, isLoading: isUserLoading } = useFetchUserData();
   const { data: HouseData, isLoading: isHouseLoading } = useListedHouseData();
   if (isUserLoading || isHouseLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex h-96 w-96 items-center justify-center">
+        <Loader />
+      </div>
+    );
   }
   if (!HouseData || !UserData) {
-    return <div>Something went wrong</div>;
+    return (
+      <div className="flex h-96 w-96 items-center justify-center">
+        <Frown size={40} />
+        <h1>Something went wrong</h1>
+      </div>
+    );
   }
   return (
     <div className="relative grid grid-cols-1 gap-y-6 px-5 pt-24 lg:grid-cols-3 lg:pt-28">

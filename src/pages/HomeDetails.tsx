@@ -39,7 +39,7 @@ const HomeDetails = () => {
   };
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center">
+      <div className="flex h-96 w-96 items-center justify-center">
         <Loader />
       </div>
     );
@@ -95,10 +95,10 @@ const HomeDetails = () => {
               <h1 className="text-2xl font-semibold">{data.title}</h1>
               <p className="flex items-center text-xs">
                 <MapPin />
-                {data.address}
+                {data.address}, {data.city}
               </p>
               <span className="w-fit border border-black bg-accent p-2">
-                $ {data.price}
+                ₹ {data.price}
               </span>
             </div>
             <Link

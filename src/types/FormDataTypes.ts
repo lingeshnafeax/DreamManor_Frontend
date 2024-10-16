@@ -1,14 +1,14 @@
 export interface FilterFormDataType {
   location: string;
-  type: "Buy" | "Rent";
-  category: "Home" | "Appartment" | "Plot";
+  type: "buy" | "rent";
+  category: "apartment" | "condo" | "house" | "land";
   minPrice: number;
   maxPrice: number;
   bedroom: number;
 }
 
 export interface SearchFormDataType {
-  location: string;
+  city: string;
   minPrice: number;
   maxPrice: number;
 }
@@ -28,4 +28,3 @@ export interface UpdateFormData {
   password?: string;
   avatar?: string;
 }
-
