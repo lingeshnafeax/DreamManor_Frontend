@@ -8,7 +8,9 @@ import { Frown, Loader } from "lucide-react";
 
 const SellerProfile = () => {
   const { data: UserData, isLoading: isUserLoading } = useFetchUserData();
-  const { data: HouseData, isLoading: isHouseLoading } = useListedHouseData();
+  const { data: HouseData, isLoading: isHouseLoading } = useListedHouseData({
+    userId: UserData?.id || undefined,
+  });
   if (isUserLoading || isHouseLoading) {
     return (
       <div className="flex h-96 w-96 items-center justify-center">
@@ -39,9 +41,17 @@ const SellerProfile = () => {
             </Link>
           </div>
           <div className="flex flex-col gap-y-6">
-            {HouseData.map((HouseData, index) => {
-              return <HomeCard key={index} data={HouseData!} />;
-            })}
+            {HouseData.length > 0 ? (
+              HouseData.map((HouseData, index) => {
+                return <HomeCard key={index} data={HouseData!} />;
+              })
+            ) : (
+              <div className="flex flex-col items-center gap-y-6 justify-center">
+                <Frown size={40} />
+                <h1>No houses found! Add some</h1>
+              </div>
+            )}
+            {}
           </div>
         </div>
       </div>

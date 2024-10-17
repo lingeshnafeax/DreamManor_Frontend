@@ -10,7 +10,7 @@ const HomeCard = ({ data }: { data: ListHouseDataType }) => {
       <div className="overflow-hidden">
         <img
           src={data.images[0]}
-          className="h-52 w-80 rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-105"
+          className="h-60 w-full overflow-hidden rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-105 lg:h-52 lg:w-80"
           alt=""
         />
       </div>
@@ -18,7 +18,7 @@ const HomeCard = ({ data }: { data: ListHouseDataType }) => {
         <h1 className="text-xl font-semibold">{data.title}</h1>
         <p className="flex items-center gap-x-1">
           <MapPin className="lg:size-5" />
-          <span>{data.address}</span>,<span>{data.city}</span>
+          <span>{data.address}</span>
         </p>
         <div>
           <span className="border border-black bg-accent p-2">

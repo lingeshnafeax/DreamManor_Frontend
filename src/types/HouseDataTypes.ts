@@ -14,7 +14,7 @@ export type ListHouseDataType = {
   type: string;
   property: string;
   userId: string;
-  createdAt: string;
+  createdAt: Date;
 };
 export type PostDetailsType = {
   id: string;

@@ -9,10 +9,12 @@ import { useAddHouse } from "../features/AddHome/hooks/useAddHouse";
 import { z } from "zod";
 import { AddHouseFormDataSchema } from "../utils/validations";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { DevTool } from "@hookform/devtools";
 
 const AddHome = () => {
   const {
     register,
+    control,
     formState: { errors },
     handleSubmit,
     setValue,
@@ -57,7 +59,7 @@ const AddHome = () => {
   });
 
   return (
-    <div className="mx-4 flex flex-col pt-20 lg:gap-y-3 lg:pb-12 lg:pt-24">
+    <div className="mx-8 flex flex-col pt-20 lg:mx-4 lg:gap-y-3 lg:pb-12 lg:pt-24">
       <h1 className="text-3xl font-semibold">List a new house 👋</h1>
       <p>Please ensure to fill all the necessary fields!!</p>
       <form
@@ -215,7 +217,7 @@ const AddHome = () => {
           />
         </div>
 
-        <div className="flex justify-center pt-6">
+        <div className="flex justify-center pt-4 lg:pt-6">
           <button
             disabled={isPending}
             className="h-fit w-full border border-black bg-accent p-2"
@@ -226,6 +228,7 @@ const AddHome = () => {
         </div>
       </form>
       <FormErrors errors={errors} />
+      <DevTool control={control} />
     </div>
   );
 };

@@ -27,14 +27,18 @@ const CustomForm = (props: CustomFormProps) => {
             <label className="text-xl font-semibold">{props.label}</label>
           )}
           <select
-            className="no-arrow border border-black p-3 placeholder:text-black"
+            className="no-arrow border border-black p-3 placeholder:text-black capitalize"
             defaultValue={props.selectOptions?.[0]}
             required={isRequired}
             {...props.register(props.name)}
           >
             {props.selectOptions?.map((value) => {
               return (
-                <option key={value} className="p-3 text-black" value={value}>
+                <option
+                  key={value}
+                  className="p-3 capitalize text-black"
+                  value={value}
+                >
                   {value}
                 </option>
               );

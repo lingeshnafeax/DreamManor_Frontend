@@ -25,7 +25,6 @@ export const useListedHouseData = (queryParams: ListedHomeQueryParams = {}) => {
     ...(userId && { userId }),
     ...(bedroom && { bedroom }),
   };
-  console.log(params);
   const { data, isLoading, refetch } = useQuery<ListHouseDataType[]>({
     queryKey: [
       "listedHomes",

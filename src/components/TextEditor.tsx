@@ -4,18 +4,22 @@ import "react-quill/dist/quill.snow.css"; // Import Quill stylesheet
 
 interface TextEditorProps {
   initialValue?: string;
-  onChange: (value: string) => void;
+  onChange?: (value: string) => void;
+  readOnly?: boolean;
 }
 
 const TextEditor: React.FC<TextEditorProps> = ({
   initialValue = "",
   onChange,
+  readOnly = false,
 }) => {
   const [content, setContent] = useState<string>(initialValue);
 
   const handleChange = (value: string) => {
     setContent(value);
-    onChange(value);
+    if (onChange) {
+      onChange(value);
+    }
   };
 
   // Quill modules for toolbar and other configurations
@@ -52,6 +56,7 @@ const TextEditor: React.FC<TextEditorProps> = ({
         onChange={handleChange}
         modules={modules}
         formats={formats}
+        readOnly={readOnly}
       />
     </div>
   );

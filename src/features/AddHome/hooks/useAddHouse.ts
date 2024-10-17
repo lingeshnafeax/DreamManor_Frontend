@@ -26,6 +26,7 @@ export const useAddHouse = () => {
           pet: data.pet,
           income: data.income,
           size: data.size,
+          utilities: data.utilities,
           school: data.school,
           bus: data.bus,
           restaurant: data.restaurant,
